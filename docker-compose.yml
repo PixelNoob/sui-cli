@@ -7,3 +7,5 @@ services:
         container_name: sui-tool
         env_file: .env
         tty: true
+        volumes:
+          - ./data:/root/.sui
