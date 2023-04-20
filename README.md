@@ -18,3 +18,8 @@ Inside the container you can run:
 
     docker exec sui-cli sui sui-cli
     docker exec sui-cli sui sui-tool
+    
+## Set an alias in .bashrc for easy of use 
+
+    alias sui-cli="docker exec sui-cli sui sui-cli"
+    alias sui-took="docker exec sui-cli sui sui-tool"
