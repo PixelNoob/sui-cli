@@ -1,18 +1,12 @@
-FROM ubuntu:20.04
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get update && apt-get install -y rustc cargo git cmake libssl-dev libclang-dev curl build-essential
-
+FROM rust:1.65.0 AS chef
 WORKDIR /sui
+RUN apt-get update && apt-get install -y git cmake clang
+RUN git clone https://github.com/MystenLabs/sui && cd sui && git checkout $COMMIT
+RUN cd sui && cargo build --release --bin sui --bin sui-tool 
 
-RUN git clone https://github.com/MystenLabs/sui && cd sui && \
-    cargo build --bin sui && \
-    cargo build --bin sui-tool && \
-    echo "alias sui-cli='$(pwd)/target/debug/sui'" >> ~/.bashrc && \
-    echo "alias sui-tool='$(pwd)/target/debug/sui-tool'" >> ~/.bashrc
-
-COPY sui.sh /usr/local/bin/sui
-RUN chmod +x /usr/local/bin/sui
+FROM debian:bullseye-slim AS runtime
+WORKDIR sui
+COPY --from=chef /sui/sui/target/release/sui /usr/local/bin
+COPY --from=chef /sui/sui/target/release/sui-tool /usr/local/bin
 
 CMD ["/bin/bash"]
