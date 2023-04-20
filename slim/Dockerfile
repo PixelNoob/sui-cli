@@ -23,4 +23,6 @@ COPY --from=build /usr/local/bin/sui .
 COPY sui.sh /usr/local/bin/sui
 RUN chmod +x /usr/local/bin/sui
 
+RUN apt-get install -y ca-certificates ## nedeed for sui client to interact with RPCs
+
 CMD ["/bin/sh"]
