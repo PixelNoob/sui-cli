@@ -14,12 +14,11 @@ RUN git clone https://github.com/MystenLabs/sui && cd sui && \
 
 # Stage 2 - Copy the SUI binary to a smaller image
 
-FROM alpine:latest
+FROM ubuntu:20.04
+WORKDIR /sui
 
-COPY --from=build /usr/local/bin/sui-tool /usr/local/bin/sui-tool
-COPY --from=build /usr/local/bin/sui /usr/local/bin/sui
-
-RUN apk add --no-cache libssl1.1
+COPY --from=build /usr/local/bin/sui-tool .
+COPY --from=build /usr/local/bin/sui .
 
 COPY sui.sh /usr/local/bin/sui
 RUN chmod +x /usr/local/bin/sui
