@@ -11,7 +11,7 @@ docker run -it --name sui-cli sui:latest
 
 Inside the container you can run:
 
-    sui
+    sui-cli
     sui-tool
 
 ## Run commands from host with container running
