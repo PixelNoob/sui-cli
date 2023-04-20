@@ -1,10 +1,11 @@
-version: '3'
+version: "3.0"
 
 services:
-  sui-cli:
-    image: pixelnoob/sui:slim
-    container_name: sui-cli
-    stdin_open: true
-    tty: true
-    volumes:
-      - ./data:/root/.sui
+    sui-tool:
+        build: .
+        image: sui-tool
+        container_name: sui-tool
+        env_file: .env
+        tty: true
+        volumes:
+          - ./data:/root/.sui
