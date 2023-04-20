@@ -1,0 +1,11 @@
+version: "3.0"
+
+services:
+    sui-tool:
+        build: .
+        image: sui-tool
+        container_name: sui-tool
+        env_file: .env
+        tty: true
+        volumes:
+          - ./data:/root/.sui
