@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y rustc cargo git cmake libssl-dev libcla
 
 WORKDIR /sui
 
-RUN git clone https://github.com/MystenLabs/sui && \
+RUN git clone https://github.com/MystenLabs/sui && cd sui && \
     cargo build --bin sui && \
     cargo build --bin sui-tool && \
     echo "alias sui-cli='$(pwd)/target/debug/sui'" >> ~/.bashrc && \
