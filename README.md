@@ -11,8 +11,8 @@ docker run -it --name sui-cli sui:latest
 
 Inside the container you can run:
 
-    ./sui/target/debug/sui
-    ./sui/target/debug/sui-tool
+    sui
+    sui-tool
 
 ## Run commands from host with container running
 
