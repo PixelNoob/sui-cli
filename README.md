@@ -23,3 +23,7 @@ Inside the container you can run:
 
     alias sui-cli="docker exec sui-cli sui sui-cli"
     alias sui-tool="docker exec sui-cli sui sui-tool"
+    
+## Run compile image from dockerhub
+
+    docker run -it --name sui-cli pixelnoob/sui:latest
