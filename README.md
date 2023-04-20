@@ -3,16 +3,11 @@ Sui is a next-generation smart contract platform powered by MOVE programming lan
 
 ## Build the image
 
-    docker build -t sui . 
+    docker build -t sui:slim . 
 
 ## Run commands from inside the docker container
 
-    docker run -it --name sui-cli sui:latest
-
-Inside the container you can run:
-
-    sui-cli
-    sui-tool
+    docker run -it --name sui-cli sui:slim
 
 ## Run commands from host with container running
 
@@ -26,4 +21,4 @@ Inside the container you can run:
     
 ## Run compile image from dockerhub
 
-    docker run -it --name sui-cli pixelnoob/sui:latest
+    docker run -it --name sui-cli pixelnoob/sui:slim
