@@ -2,7 +2,7 @@ version: '3'
 
 services:
   sui-cli:
-    image: sui:latest
+    image: pixelnoob/sui:slim
     container_name: sui-cli
     stdin_open: true
     tty: true
